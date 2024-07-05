@@ -11,11 +11,11 @@ It is possible to solder all components and parts using a regular soldering iron
 | --------- | ----: | ------- |
 | mnhTTn PCB | 1 | You can find the required files [here](/board/) |
 | Seeed Studio XIAO nRF52840 | 2 | Make sure you have the BLE version, there is no support for wired communication |
-| 1N4148W | 36 | Surface mount diodes in SOD123 package |
+| 1N4148W | 48 | Surface mount diodes in SOD123 package |
 | MSK12C02 | 2 | Power switches |
 | COM-08720 | 2 | Reset switches (these are optional[^1]) |
 | 301030 | 2 | LiPo Battery with 3.7V, 80mAh, 32 x 10 x 3 mm |
-| MX ULP | 36 | Cherry MX ULP switches |
+| MX ULP | 48 | Cherry MX ULP switches |
 | Keycap Bundle | 4 | You can find the required files [here](/keycaps/) |
 | SBR rubber mat | 1 | 1mm thinkness |
 
@@ -98,6 +98,7 @@ Remove any wire that is poking through the bottom of the PCB.
 You can use an old toothbrush and some isopropanol to clean it from residues.
 
 ## Flash the firmware
+TODO: new firmware
 If you have not already flashed the firmware to the microcontroller you should do it now.
 [Here](https://github.com/fooker/mnhttn-zmk) you can find my ZMK configuration for the board.
 

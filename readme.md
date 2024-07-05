@@ -1,6 +1,6 @@
-# mnhTTn
+# mnhTTn 5*4+3+1
 
-mnhTTn is a 36 key column-staggered split keyboard using Cherry MX ULP switches.
+mnhTTn is the a 48 key version of fookers mnhTTn column-staggered split keyboard using Cherry MX ULP switches.
 Designed to be as flat and lightweight as possible.
 
 ## Features
@@ -9,6 +9,7 @@ Designed to be as flat and lightweight as possible.
 * Only 7.2mm height
 
 ## Layout
+TODO: 5*4+3+1 layout
 ![Layout](docs/images/layout.svg)
 
 ## PCB
@@ -22,12 +23,15 @@ There are no keycaps available off the shelve but have been manifactured using M
 The models are availabe [here](/keycaps/).
 
 ## Build Guide
+TODO: check if the guide fits the 5*4 layout
 The build guide can be found [here](/docs/buildguide.md).
 
 ## Firmware
+TODO: 5*4+3+1 firmware
 My [ZMK config](https://github.com/fooker/mnhttn-zmk) for the mnhTTn.
 
 ## Photos
+TODO: new photos
 ![mnhTTn](/docs/images/mnhTTn_black_both.jpg)\
 ![mnhTTn](/docs/images/mnhTTn_black_perspective.jpg)\
 ![mnhTTn](/docs/images/mnhTTn_black_side.jpg)\
@@ -35,6 +39,8 @@ My [ZMK config](https://github.com/fooker/mnhttn-zmk) for the mnhTTn.
 ![mnhTTn](/docs/images/mnhTTn_black_top.jpg)
 
 ## Credits and inspirationt
+Thanks to fooker for the original mnhTTn.
+
 The idea to creat such a keyboard emerged from the wonderfull [Click! Clack! Hack!](https://www.clickclackhack.de/) community.
 
 The layout of the board is inspired by [TOTEM](https://github.com/GEIGEIGEIST/TOTEM).
