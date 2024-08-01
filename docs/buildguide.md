@@ -98,9 +98,8 @@ Remove any wire that is poking through the bottom of the PCB.
 You can use an old toothbrush and some isopropanol to clean it from residues.
 
 ## Flash the firmware
-TODO: new firmware
 If you have not already flashed the firmware to the microcontroller you should do it now.
-[Here](https://github.com/fooker/mnhttn-zmk) you can find my ZMK configuration for the board.
+[Here](/zmk-config) you can pind an example firmware for the mnhTTn48, copy it to your own zmk-config repo. See [zmk docs][https://zmk.dev/docs/user-setup] how to setup a repo.
 
 Probably a good idea to test all switches before gluing on the rubber mat.
 

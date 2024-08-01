@@ -1,6 +1,6 @@
-# mnhTTn 5*4+3+1
+# mnhTTn48
 
-mnhTTn is the a 48 key version of fookers mnhTTn column-staggered split keyboard using Cherry MX ULP switches.
+mnhTTn48 is the a 48 key version of fookers mnhTTn column-staggered split keyboard using Cherry MX ULP switches.
 Designed to be as flat and lightweight as possible.
 
 ## Features
@@ -9,7 +9,6 @@ Designed to be as flat and lightweight as possible.
 * Only 7.2mm height
 
 ## Layout
-TODO: 5*4+3+1 layout
 ![Layout](docs/images/layout.svg)
 
 ## PCB
@@ -27,16 +26,14 @@ TODO: check if the guide fits the 5*4 layout
 The build guide can be found [here](/docs/buildguide.md).
 
 ## Firmware
-TODO: 5*4+3+1 firmware
-My [ZMK config](https://github.com/fooker/mnhttn-zmk) for the mnhTTn.
+Copy the example [ZMK config](/zmk-config) for the mnhTTn48 to your own zmk-config repo. See [ZMK user Setup](https://zmk.dev/docs/user-setup).
 
 ## Photos
-TODO: new photos
-![mnhTTn](/docs/images/mnhTTn_black_both.jpg)\
-![mnhTTn](/docs/images/mnhTTn_black_perspective.jpg)\
-![mnhTTn](/docs/images/mnhTTn_black_side.jpg)\
-![mnhTTn](/docs/images/mnhTTn_black_profile.jpg)\
-![mnhTTn](/docs/images/mnhTTn_black_top.jpg)
+![mnhTTn](/docs/images/mnhTTn48_black_both.jpg)\
+![mnhTTn](/docs/images/mnhTTn48_black_perspective.jpg)\
+![mnhTTn](/docs/images/mnhTTn48_black_side.jpg)\
+![mnhTTn](/docs/images/mnhTTn48_black_profile.jpg)\
+![mnhTTn](/docs/images/mnhTTn48_black_top.jpg)
 
 ## Credits and inspirationt
 Thanks to fooker for the original mnhTTn.
