@@ -1,4 +1,4 @@
-.PHONY: drill clean
+.PHONY: drill clean check-baseline check
 
 NAME := mnhttn
 
@@ -37,3 +37,10 @@ clean:
 	rm -fR out
 	rm -f out.zip
 
+
+check-baseline:
+	./check.sh generate check/baseline
+
+check: check/baseline
+	./check.sh generate check/current
+	./check.sh compare check/baseline check/current

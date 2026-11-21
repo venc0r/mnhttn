@@ -22,3 +22,6 @@ fp-info-cache
 /out
 /out.zip
 
+
+# verification artefacts from check.sh
+/check
