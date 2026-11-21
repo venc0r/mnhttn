@@ -86,11 +86,17 @@ the switch's net-less housing pads and through its alignment bore at (218.32, 28
 zone refill afterwards (stored fill reports `clearance` to the moved tracks until then); with the
 board already in KiCad 10 format the refill only touched the fill around the moved segments.
 
+**Resolved: 199 `copper_edge_clearance`.** "Board edge clearance violation" without a number means
+copper overlaps an Edge.Cuts item (board rule is 0 mm). 177 were the switch footprint's through-hole
+pads straddling the pocket notch (pad r 0.70 mm, notch r 0.49 mm, drill r 0.508 mm: the pin sits at
+the pocket edge, so this cannot be avoided without a D-shaped pad). 12 were the XIAO pads 15-20 on
+its module cutout, same pattern. Both are accepted by design through `mnhttn.kicad_dru`
+(`edge_clearance (min -1mm)` for pads of those two footprints). The remaining 22 were track end caps
+or 45-degree approaches grazing the notch corner by 0.02-0.04 mm; those 13 tracks were moved so they
+enter the pads through solid material. Any track move needs a zone refill afterwards.
+
 **Still open:**
-- 199 `copper_edge_clearance` ("Board edge clearance violation" = copper crosses an Edge.Cuts item).
-  Mostly the switch footprint's through-hole pads 1 / 2 overlapping the switch cutout, four per
-  switch, by design. The same class also hides real cases: tracks crossing cutout arcs or alignment
-  bores, e.g. `COL_1_L` on F.Cu at `SW_L_4_6/14/25` and diode tracks on B.Cu at several left-half
-  switches. Filter the DRC JSON for items containing "Leiterbahn" to list them. KiCad pairs pad and
-  segment differently between runs, so single entries move between "removed" and "added".
+- 75 `isolated_copper` warnings: small hatch islands of the GND zones. Zone setting "remove islands"
+  would clear them, not touched.
+- 3 `track_dangling`, 2 `silk_edge_clearance`, 1 `text_thickness`: not looked at.
 - 4 schematic parity issues and 4 unconnected net pairs between the halves are pre-existing.

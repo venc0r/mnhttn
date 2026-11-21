@@ -1,0 +1,12 @@
+(version 1)
+
+# The Cherry MX ULP "Human" footprint puts the switch pins at the pocket edge, so its
+# through-hole pads overlap the Edge.Cuts pocket by design (pad r 0.70 mm, notch r 0.49 mm).
+(rule "ULP switch pads straddle the switch pocket"
+	(condition "A.memberOfFootprint('mnhttn:Cherry_MX_ULP_Human') && A.Type == 'Pad'")
+	(constraint edge_clearance (min -1mm)))
+
+# The XIAO sits in a cutout; its through-hole pads 15-20 sit on that cutout's edge the same way.
+(rule "XIAO pads straddle the module cutout"
+	(condition "A.memberOfFootprint('mnhttn:xiao-ble-smd-cutout') && A.Type == 'Pad'")
+	(constraint edge_clearance (min -1mm)))
