@@ -61,8 +61,22 @@ only the gerber encoding moved from draws to flashes. Lessons from doing it:
 - To see what the parity check complains about, open the board in KiCad and use
   Inspect -> Compare Footprint With Library (Summary tab). `kicad-cli` only reports the count.
 
+**Fixed: 24 `invalid_outline`.** Reported against `SW_L_4_40` only because KiCad attaches outline errors
+to the first footprint in the file. The real cause were 24 board-level `gr_circle` on Edge.Cuts with
+radius 1 nm and stroke 0.635 mm: the mouse bites of the bridge between the halves (y 70.5-78.1 mm,
+x 131.3 and 167.1), drawn as dots. Replaced by footprint `MouseBites_10x0.5mm_P0.76mm` (10 NPTH
+0.5 mm holes, pitch 0.76 mm, board-only, excluded from BOM and position file), placed as MB1 / MB2
+on the old dot columns. The stored GND zone fill still avoids the old dots and sits 0.015 mm from the
+new holes, so DRC reports 11 `hole_clearance` until the zones are refilled. A refill with
+`kicad-cli pcb drc --refill-zones --save-board` clears them, but KiCad 10 regenerates the hatched fill
+with a different pattern phase on both copper layers (2.4 M px raster diff) and re-serialises the
+whole board in the new file format (~140k changed lines). Do that as its own commit, with a fresh
+`make check-baseline` right before it, and expect the copper rasters to differ everywhere.
+
+Raster notes: `pcb export svg` draws drill holes on every layer (`--drill-shape-opt` default), so new
+holes show up as diff clusters on paste and silk rasters too. Judge raster diffs by cluster position.
+
 **Still open:**
-- 24 `invalid_outline` from one Edge.Cuts arc on `SW_L_4_40` with a 1 nm radius.
 - `SW_L_4_29`: three `/COL_0_R` tracks cross its net-less mounting pad (3 shorting_items,
   3 solder_mask_bridge). Real layout defect, was hidden in the noise before.
 - 4 schematic parity issues and 4 unconnected net pairs between the halves are pre-existing.
