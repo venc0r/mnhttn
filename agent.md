@@ -79,11 +79,18 @@ holes show up as diff clusters on paste and silk rasters too. Judge raster diffs
 Zones were refilled and the board saved with KiCad 10 on 2026-11-21 (own commit). Since then the
 file is in KiCad 10 format and `make check` copper rasters compare against the new hatch.
 
+**Fixed: `SW_L_4_29` shorting / mask bridge.** `/COL_0_R` and `/COL_1_R` ran as a 0.5 mm pair across
+the switch's net-less housing pads and through its alignment bore at (218.32, 28.94). Rerouted:
+`COL_0_R` now passes below-left of the right housing pad (diagonal x+y = 243.5, horizontal y = 30.6),
+`COL_1_R` above-right of the bore (diagonal x+y = 248.5, horizontal y = 31.1). Track edits need a
+zone refill afterwards (stored fill reports `clearance` to the moved tracks until then); with the
+board already in KiCad 10 format the refill only touched the fill around the moved segments.
+
 **Still open:**
-- `SW_L_4_29`: three `/COL_0_R` tracks cross its net-less mounting pad (3 shorting_items,
-  3 solder_mask_bridge). Real layout defect, was hidden in the noise before.
-- 199 `copper_edge_clearance`: the switch footprint's through-hole pads 1 / 2 sit closer to the
-  switch cutout than the board's copper-to-edge rule allows, four per switch. Design decision of the
-  footprint, not a regression. KiCad pairs pad and cutout segment differently between runs, so one or
-  two of these move between "removed" and "added" in the check output.
+- 199 `copper_edge_clearance` ("Board edge clearance violation" = copper crosses an Edge.Cuts item).
+  Mostly the switch footprint's through-hole pads 1 / 2 overlapping the switch cutout, four per
+  switch, by design. The same class also hides real cases: tracks crossing cutout arcs or alignment
+  bores, e.g. `COL_1_L` on F.Cu at `SW_L_4_6/14/25` and diode tracks on B.Cu at several left-half
+  switches. Filter the DRC JSON for items containing "Leiterbahn" to list them. KiCad pairs pad and
+  segment differently between runs, so single entries move between "removed" and "added".
 - 4 schematic parity issues and 4 unconnected net pairs between the halves are pre-existing.
