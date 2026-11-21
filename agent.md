@@ -76,7 +76,14 @@ whole board in the new file format (~140k changed lines). Do that as its own com
 Raster notes: `pcb export svg` draws drill holes on every layer (`--drill-shape-opt` default), so new
 holes show up as diff clusters on paste and silk rasters too. Judge raster diffs by cluster position.
 
+Zones were refilled and the board saved with KiCad 10 on 2026-11-21 (own commit). Since then the
+file is in KiCad 10 format and `make check` copper rasters compare against the new hatch.
+
 **Still open:**
 - `SW_L_4_29`: three `/COL_0_R` tracks cross its net-less mounting pad (3 shorting_items,
   3 solder_mask_bridge). Real layout defect, was hidden in the noise before.
+- 199 `copper_edge_clearance`: the switch footprint's through-hole pads 1 / 2 sit closer to the
+  switch cutout than the board's copper-to-edge rule allows, four per switch. Design decision of the
+  footprint, not a regression. KiCad pairs pad and cutout segment differently between runs, so one or
+  two of these move between "removed" and "added" in the check output.
 - 4 schematic parity issues and 4 unconnected net pairs between the halves are pre-existing.
